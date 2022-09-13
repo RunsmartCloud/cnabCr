@@ -81,34 +81,34 @@ define([ 'N/record', 'N/log', 'N/runtime', './rsc-cnab-batch', 'N/error', './rsc
                 })
                 var Subbanco = bancoLookup.custrecord_rsc_cnab_bank_code_ds
                 var Subsequencial = bancoLookup.custrecord_rsc_cnab_bank_sequecial_nu
-                var accountRecord = search.lookupFields({
-                    type:'customrecord_rsc_cnab_bankaccount',
-                    id: transaction.getValue('custbody_rsc_cnab_inst_locationba_ls'),
-                    columns:[
-                        'custrecord_rsc_cnab_ba_agencynumber_ls',
-                        'custrecord_rsc_cnab_ba_dvagencynumber_ds',
-                        'custrecord_rsc_cnab_ba_number_ds',
-                        'custrecord_rsc_cnab_ba_dvnumber_ds',
-                        'custrecord_rsc_cnab_ba_portfolio_ls',
-                        'custrecord_rsc_cnab_ba_bank_ls',
-                        'name',
-                        'custrecord_rsc_cnab_ba_agreement_ds'
-                    ]
-                })
-                var agenciaAccount = accountRecord.custrecord_rsc_cnab_ba_agencynumber_ls
-                var digitoAgencia = accountRecord.custrecord_rsc_cnab_ba_dvagencynumber_ds
-                var contaCorrente = accountRecord.custrecord_rsc_cnab_ba_number_ds
-                var digitoConta = accountRecord.custrecord_rsc_cnab_ba_dvnumber_ds
-                var convenio = accountRecord.custrecord_rsc_cnab_ba_agreement_ds
+                // var accountRecord = search.lookupFields({
+                //     type:'customrecord_rsc_cnab_bankaccount',
+                //     id: transaction.getValue('custbody_rsc_cnab_inst_locationba_ls'),
+                //     columns:[
+                //         'custrecord_rsc_cnab_ba_agencynumber_ls',
+                //         'custrecord_rsc_cnab_ba_dvagencynumber_ds',
+                //         'custrecord_rsc_cnab_ba_number_ds',
+                //         'custrecord_rsc_cnab_ba_dvnumber_ds',
+                //         'custrecord_rsc_cnab_ba_portfolio_ls',
+                //         'custrecord_rsc_cnab_ba_bank_ls',
+                //         'name',
+                //         'custrecord_rsc_cnab_ba_agreement_ds'
+                //     ]
+                // })
+                // var agenciaAccount = accountRecord.custrecord_rsc_cnab_ba_agencynumber_ls
+                // var digitoAgencia = accountRecord.custrecord_rsc_cnab_ba_dvagencynumber_ds
+                // var contaCorrente = accountRecord.custrecord_rsc_cnab_ba_number_ds
+                // var digitoConta = accountRecord.custrecord_rsc_cnab_ba_dvnumber_ds
+                // var convenio = accountRecord.custrecord_rsc_cnab_ba_agreement_ds
                 var nossoNumero = transaction.getValue('custrecord_rsc_cnab_inst_ournumber_nu')
-                var codCarteira = accountRecord.custrecord_rsc_cnab_ba_portfolio_ls[0].value
-                var carteira = search.lookupFields({
-                    type:'customrecord_rsc_cnab_portfolio',
-                    id: codCarteira,
-                    columns:[
-                        'custrecord_rsc_cnab_portfolio_code_ds'
-                    ]
-                }).custrecord_rsc_cnab_portfolio_code_ds
+                // var codCarteira = accountRecord.custrecord_rsc_cnab_ba_portfolio_ls[0].value
+                // var carteira = search.lookupFields({
+                //     type:'customrecord_rsc_cnab_portfolio',
+                //     id: codCarteira,
+                //     columns:[
+                //         'custrecord_rsc_cnab_portfolio_code_ds'
+                //     ]
+                // }).custrecord_rsc_cnab_portfolio_code_ds
                 var numDoc = transaction.id
                 var dueDate = transaction.getValue('duedate');
                 var total = transaction.getValue('total')
@@ -125,26 +125,26 @@ define([ 'N/record', 'N/log', 'N/runtime', './rsc-cnab-batch', 'N/error', './rsc
                 var juros = transaction.getValue('custrecord_rsc_cnab_inst_interest_cu');
                 var desconto = transaction.getValue('custrecord_rsc_cnab_inst_discount_cu')
                 var identificaTitulo = transaction.getValue('tranid')
-                var codBanco = accountRecord.custrecord_rsc_cnab_ba_bank_ls[0].value
-                var nameBank = accountRecord.custrecord_rsc_cnab_ba_bank_ls[0].text
-                var bancoLookup = search.lookupFields({
-                    type:'customrecord_rsc_cnab_bank',
-                    id: codBanco,
-                    columns:[
-                        'custrecord_rsc_cnab_bank_code_ds',
-                        'custrecord_rsc_cnab_bank_sequecial_nu'
-                    ]
-                })
-                var banco = bancoLookup.custrecord_rsc_cnab_bank_code_ds
-                var sequencial = bancoLookup.custrecord_rsc_cnab_bank_sequecial_nu
-                var contaFavorecido = search.lookupFields({
-                    type:'customrecord_rsc_cnab_bankaccount',
-                    id: transaction.getValue('custbody_rsc_cnab_inst_bankaccount_ls'),
-                    columns:[
-                        'custrecord_rsc_cnab_ba_entity_ls'
-                    ]
-                })
-                var entidade = contaFavorecido.custrecord_rsc_cnab_ba_entity_ls[0].value
+                // var codBanco = accountRecord.custrecord_rsc_cnab_ba_bank_ls[0].value
+                // var nameBank = accountRecord.custrecord_rsc_cnab_ba_bank_ls[0].text
+                // var bancoLookup = search.lookupFields({
+                //     type:'customrecord_rsc_cnab_bank',
+                //     id: codBanco,
+                //     columns:[
+                //         'custrecord_rsc_cnab_bank_code_ds',
+                //         'custrecord_rsc_cnab_bank_sequecial_nu'
+                //     ]
+                // })
+                // var banco = bancoLookup.custrecord_rsc_cnab_bank_code_ds
+                // var sequencial = bancoLookup.custrecord_rsc_cnab_bank_sequecial_nu
+                // var contaFavorecido = search.lookupFields({
+                //     type:'customrecord_rsc_cnab_bankaccount',
+                //     id: transaction.getValue('custbody_rsc_cnab_inst_bankaccount_ls'),
+                //     columns:[
+                //         'custrecord_rsc_cnab_ba_entity_ls'
+                //     ]
+                // })
+                var entidade = transaction.getValue('entity')
                 var searchSetup = search.create({
                     type: 'customrecord_rsc_cnab_fieldssetup',
                     columns: ['custrecord_acs_cnab_fs_city_ds', 'custrecord_acs_cnab_fs_district_ds', 'custrecord_acs_cnab_fs_addresstype_ds',
@@ -177,16 +177,16 @@ define([ 'N/record', 'N/log', 'N/runtime', './rsc-cnab-batch', 'N/error', './rsc
                 var districtnew  = address.getValue({ fieldId: 'addr3' });
                 var number = ( setup.number ) ? address.getValue({ fieldId: setup.number }) : '';
                 var complement = ( setup.complement ) ? address.getValue({ fieldId: setup.complement }) : '';
-                var nomePagador = accountRecord.name
+                // var nomePagador = accountRecord.name
                 var metodoPagemento = transaction.getValue('custbody_rsc_cnab_inst_paymentmetho_ls')
                 
                 var valores = {
-                    agenciaMantedora: agenciaAccount,
-                    digitoAgencia: digitoAgencia,
-                    contaCorrente: contaCorrente,
-                    digitoConta: digitoConta,
-                    nossoNumero: nossoNumero,
-                    codCarteira: carteira,
+                    agenciaMantedora: 'as',
+                    digitoAgencia: 'asd',
+                    contaCorrente: 'contaCorrente',
+                    digitoConta: 'digitoConta',
+                    nossoNumero: transaction.id,
+                    codCarteira: 'carteira',
                     numDocumento: numDoc,
                     dataVencimento: dueDate,
                     cpnjCliente: cpnjCliente,
@@ -196,7 +196,7 @@ define([ 'N/record', 'N/log', 'N/runtime', './rsc-cnab-batch', 'N/error', './rsc
                     juros: juros,
                     desconto: desconto,
                     titulo: identificaTitulo,
-                    codBanco: banco,
+                    codBanco: 'banco',
                     cep: zip,
                     estado: state,
                     nomeSub: subRecord.getValue('legalname'),
@@ -206,10 +206,10 @@ define([ 'N/record', 'N/log', 'N/runtime', './rsc-cnab-batch', 'N/error', './rsc
                     bairro: districtnew,
                     numero: number,
                     complemento: complement,
-                    nomePagador: nomePagador,
-                    convenio: convenio,
-                    nameBank: nameBank,
-                    sequencial: sequencial,
+                    nomePagador: clienteRecord.getValue('custentity_enl_legalname'),
+                    convenio: 'convenio',
+                    nameBank: 'nameBank',
+                    sequencial: 'sequencial',
                     cnpjSub: subRecord.getValue('federalidnumber'),
                     controler: installment.controller,
                     SubagenciaAccount: SubagenciaAccount,
@@ -230,6 +230,15 @@ define([ 'N/record', 'N/log', 'N/runtime', './rsc-cnab-batch', 'N/error', './rsc
                     folder: -15
                 })
                   	.save()
+                var fatura = record.load({
+                    type:'invoice',
+                    id: installment.transaction
+                })
+                fatura.setValue({
+                    fieldId:'custbody_rsc_cnab_inst_status_ls',
+                    value: 2
+                })
+                fatura.save()
                 log.debug('metodoPagemento', metodoPagemento)
                 log.debug('valores', valores)
                 context.write({key: metodoPagemento, value: JSON.stringify(valores) })
@@ -431,23 +440,23 @@ define([ 'N/record', 'N/log', 'N/runtime', './rsc-cnab-batch', 'N/error', './rsc
             var string = ""
             var cnpj = values.cpnjCliente;
             cnpj = cnpj.replace(/[^a-z0-9]/gi, "");
-            string += values.codBanco;
+            string += values.SubcodBanco;
             string += limiteCaracteres(loteServico, 4, "0");
             string += "3";
-            string += limiteCaracteres(values.sequencial, 5, " ")
+            string += limiteCaracteres(values.Subsequencial, 5, " ")
             string += "Q";
             string += " ";
             string += "01";
             string += "0";
-            string += cnpj;
+            string += limiteCaracteres(cnpj, 15," ");
             string += limiteCaracteres(values.nomePagador, 40, " ");
             string += (values.endereco ? limiteCaracteres(values.endereco, 40, " ") : espacos(41 , " "));
-            string += (values.bairro ? limiteCaracteres(values.bairro, 15, " ") : espacos(16, " "));
+            string += (values.bairro ? limiteCaracteres(values.bairro, 15, " ") : espacos(15, " "));
             string += values.cep;
             string += (values.cidade ? limiteCaracteres(values.cidade, 15, " ") : espacos(16, " "));
             string += (values.estado ? limiteCaracteres(values.estado, 2 ," ") : espacos(3, " "));
             string += " ";
-            string += cnpj
+            string += limiteCaracteres(cnpj, 15, " ");
             string += limiteCaracteres(values.nomePagador, 40, " ");
             string += espacos(3, "0")
             string += (values.nossoNumero ? limiteCaracteres(values.nossoNumero, 20, "0") : espacos(21, "0"))
@@ -462,9 +471,9 @@ define([ 'N/record', 'N/log', 'N/runtime', './rsc-cnab-batch', 'N/error', './rsc
             string += limiteCaracteres(loteServico, 4, "0")
             string += "5";
             string += espacos(9, " ");
-            string += limiteCaracteres(values.qtdTitulos, 6, " ")
-            string += limiteCaracteres(values.qtdTitulos, 6, " ")
-            string += limiteCaracteres(String(values.total).replace(".", ""), 17, " ");
+            string += limiteCaracteres(values.qtdTitulos, 6, "0")
+            string += limiteCaracteres(values.qtdTitulos, 6, "0")
+            string += limiteCaracteres(String(values.total).replace(".", ""), 17, "0");
             string += espacos(194, " ");
             string += "\n"
             return string
@@ -488,29 +497,29 @@ define([ 'N/record', 'N/log', 'N/runtime', './rsc-cnab-batch', 'N/error', './rsc
         }
         function trailerArq(values){
             var string = "";
-            string += values.codBanco;
+            string += values.SubcodBanco;
             string += "9999";
             string += "9";
             string += espacos(9, " ")
-            string += limiteCaracteres(values.qtdTitulos, 6, " ")
-            string += limiteCaracteres(values.qtdTitulos, 6, " ")
-            string += limiteCaracteres(values.qtdTitulos, 6, " ")
+            string += limiteCaracteres(values.qtdTitulos, 6, "0")
+            string += limiteCaracteres(values.qtdTitulos, 6, "0")
+            string += limiteCaracteres(values.qtdTitulos, 6, "0")
             string += espacos(205, " ");
             string += "\n"
             return string
         }
         function detalheLoteP (values, loteServico){
             var string = ""
-            string += values.codBanco;
+            string += values.SubcodBanco;
             string += limiteCaracteres(loteServico, 4, "0")
             string += "3";
-            string += limiteCaracteres(values.sequencial, 5, "0");
+            string += limiteCaracteres(values.Subsequencial, 5, "0");
             string += "P";
             string += " ";
             string += "01";
-            string += limiteCaracteres(values.agenciaMantedora, 5, "0");
-            string += (values.digitoAgencia ? limiteCaracteres(values.digitoAgencia, 1,"0") : " ");
-            string += limiteCaracteres(values.contaCorrente, 12, "0");
+            string += limiteCaracteres(values.SubagenciaAccount, 5, "0");
+            string += (values.digitoAgencia ? limiteCaracteres(values.SubdigitoAgencia, 1,"0") : " ");
+            string += limiteCaracteres(values.SubcontaCorrente, 12, "0");
             string += " ";
             string += " ";
             string += (values.nossoNumero ? limiteCaracteres(values.nossoNumero, 20, "0") : "00000000000000000000");
@@ -565,8 +574,8 @@ define([ 'N/record', 'N/log', 'N/runtime', './rsc-cnab-batch', 'N/error', './rsc
             //     string += ' '
             // }
             string += "         ";
-            string += (values.desconto ? limiteCaracteres(values.desconto,15,"0") : "0000000000000000");
-            string += espacos(" ", 30)
+            string += (values.desconto ? limiteCaracteres(values.desconto,15,"0") : "000000000000000");
+            string += espacos(30, " ")
             string += limiteCaracteres(values.titulo, 25, " ");
             string += " ";
             string += "  ";
